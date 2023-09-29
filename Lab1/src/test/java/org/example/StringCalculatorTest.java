@@ -30,4 +30,15 @@ public class StringCalculatorTest {
         assertEquals(15, result);
     }
 
+    @Test
+    void onlySlashn(){
+        int result = calculator.add("1\n2");
+        assertEquals(3, result);
+    }
+
+    @Test
+    void withSlashn(){
+        int result = calculator.add("1,2\n3");
+        assertEquals(6, result);
+    }
 }
