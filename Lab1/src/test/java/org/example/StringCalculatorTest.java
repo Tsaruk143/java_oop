@@ -41,4 +41,10 @@ public class StringCalculatorTest {
         int result = calculator.add("1,2\n3");
         assertEquals(6, result);
     }
+
+    @Test
+    void twoDelimetr(){
+        int result = calculator.add("1,\n");
+        assertEquals(0, result);
+    }
 }
