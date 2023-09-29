@@ -6,6 +6,15 @@ public class StringCalculator {
             return 0;
         }
         else {
+            String delimetr = ",";
+
+            if (numbers.startsWith("//")) {
+                int delimetrEnd = numbers.indexOf("\n");
+                delimetr = numbers.substring(2, delimetrEnd);
+                numbers = numbers.substring(delimetrEnd + 1);
+            }
+
+            numbers = numbers.replaceAll(delimetr, ",");
             numbers = numbers.replaceAll("\n", ",");
 
             if (numbers.contains(",,")) {
@@ -14,6 +23,8 @@ public class StringCalculator {
             }
 
             String[] numberArray = numbers.split(",");
+
+
             int sum = 0;
             for (String num : numberArray) {
                 sum += Integer.parseInt(num);
@@ -21,4 +32,5 @@ public class StringCalculator {
             return sum;
         }
     }
+
 }
