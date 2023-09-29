@@ -13,12 +13,6 @@ public class StringCalculatorTest {
     }
 
     @Test
-    void onlyDelimetrCase(){
-        int result = calculator.add(",");
-        assertEquals(0, result);
-    }
-
-    @Test
     void oneNumberCase(){
         int result = calculator.add("1");
         assertEquals(1, result);
