@@ -23,4 +23,11 @@ public class StringCalculatorTest {
         int result = calculator.add("1,2");
         assertEquals(3, result);
     }
+
+    @Test
+    void moreThanTwo(){
+        int result = calculator.add("1,2,3,4,5");
+        assertEquals(15, result);
+    }
+
 }
