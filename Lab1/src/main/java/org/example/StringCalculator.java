@@ -7,6 +7,12 @@ public class StringCalculator {
         }
         else {
             numbers = numbers.replaceAll("\n", ",");
+
+            if (numbers.contains(",,")) {
+                System.out.println("Ви не можете вводити деліметри один за одним.");
+                return 0;
+            }
+
             String[] numberArray = numbers.split(",");
             int sum = 0;
             for (String num : numberArray) {
