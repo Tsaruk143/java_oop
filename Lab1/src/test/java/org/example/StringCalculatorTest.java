@@ -53,4 +53,11 @@ public class StringCalculatorTest {
         int result = calculator.add("//;\n1;2");
         assertEquals(3, result);
     }
+
+    @Test
+    void neagtiveNumbers(){
+        assertThrows(IllegalArgumentException.class, () -> {
+            calculator.add("1,-1,2");
+        });
+    }
 }
