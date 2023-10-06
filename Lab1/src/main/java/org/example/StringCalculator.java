@@ -1,6 +1,9 @@
 package org.example;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class StringCalculator {
     public int add(String numbers) throws IllegalArgumentException {
         try {
@@ -10,9 +13,17 @@ public class StringCalculator {
                 String delimiter = ",";
 
                 if (numbers.startsWith("//")) {
-                    int delimiterEnd = numbers.indexOf("\n");
-                    delimiter = numbers.substring(2, delimiterEnd);
-                    numbers = numbers.substring(delimiterEnd + 1);
+                    Pattern pattern = Pattern.compile("//(?:\\[(.*?)\\])?\n(.*)");
+                    Matcher matcher = pattern.matcher(numbers);
+
+                    if (matcher.find()) {
+                        delimiter = Pattern.quote(matcher.group(1));
+                        numbers = matcher.group(2);
+                    } else {
+                        int delimiterEnd = numbers.indexOf("\n");
+                        delimiter = numbers.substring(2, delimiterEnd);
+                        numbers = numbers.substring(delimiterEnd + 1);
+                    }
                 }
 
                 numbers = numbers.replaceAll(delimiter, ",");
