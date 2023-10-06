@@ -66,4 +66,10 @@ public class StringCalculatorTest {
         int result = calculator.add("1000,999,1001");
         assertEquals(1999, result);
     }
+
+    @Test
+    void moreSymb(){
+        int result = calculator.add("//[***]\n1***2***3");
+        assertEquals(6, result);
+    }
 }
