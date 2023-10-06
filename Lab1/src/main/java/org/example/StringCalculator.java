@@ -13,20 +13,29 @@ public class StringCalculator {
                 String delimiter = ",";
 
                 if (numbers.startsWith("//")) {
-                    Pattern pattern = Pattern.compile("//(?:\\[(.*?)\\])?\n(.*)");
+                    Pattern pattern = Pattern.compile("//(?:\\[(.*)?\\])*\n(.*)");
                     Matcher matcher = pattern.matcher(numbers);
 
                     if (matcher.find()) {
-                        delimiter = Pattern.quote(matcher.group(1));
                         numbers = matcher.group(2);
+                        delimiter = Pattern.quote(matcher.group(1));
+                        if (delimiter.contains("][")) {
+                            String d = Pattern.quote("][");
+                            String[] delimiters = delimiter.split(d);
+                            for (String customDelimiter : delimiters) {
+                                numbers = numbers.replaceAll(Pattern.quote(customDelimiter.replace("\\Q", "").replace("\\E", "")), ",");
+                            }
+                        }
+
+                        numbers = numbers.replaceAll(delimiter, ",");
                     } else {
                         int delimiterEnd = numbers.indexOf("\n");
                         delimiter = numbers.substring(2, delimiterEnd);
                         numbers = numbers.substring(delimiterEnd + 1);
+                        numbers = numbers.replaceAll(delimiter, ",");
                     }
                 }
 
-                numbers = numbers.replaceAll(delimiter, ",");
                 numbers = numbers.replaceAll("\n", ",");
 
                 if (numbers.contains(",,")) {
