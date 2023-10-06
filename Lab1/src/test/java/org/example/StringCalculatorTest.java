@@ -60,4 +60,10 @@ public class StringCalculatorTest {
             calculator.add("1,-1,2");
         });
     }
+
+    @Test
+    void overThousand(){
+        int result = calculator.add("1000,999,1001");
+        assertEquals(1999, result);
+    }
 }
