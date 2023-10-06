@@ -78,4 +78,10 @@ public class StringCalculatorTest {
         int result = calculator.add("//[*][%][#]\n1*2%3");
         assertEquals(6, result);
     }
+
+    @Test
+    void finalTest(){
+        int result = calculator.add("//[*][%%][###]\n1###2%%3*4");
+        assertEquals(10, result);
+    }
 }
