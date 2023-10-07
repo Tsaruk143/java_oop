@@ -1,5 +1,7 @@
 package org.example;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -22,6 +24,14 @@ public class StringCalculator {
                         if (delimiter.contains("][")) {
                             String d = Pattern.quote("][");
                             String[] delimiters = delimiter.split(d);
+                            Arrays.sort(delimiters, new Comparator<String>() {
+                                @Override
+                                public int compare(String s1, String s2) {
+                                    String delimiter1 = s1.replace("\\Q", "").replace("\\E", "");
+                                    String delimiter2 = s2.replace("\\Q", "").replace("\\E","");
+                                    return Integer.compare(delimiter2.length(), delimiter1.length());
+                                }
+                            });
                             for (String customDelimiter : delimiters) {
                                 numbers = numbers.replaceAll(Pattern.quote(customDelimiter.replace("\\Q", "").replace("\\E", "")), ",");
                             }
@@ -39,7 +49,7 @@ public class StringCalculator {
                 numbers = numbers.replaceAll("\n", ",");
 
                 if (numbers.contains(",,")) {
-                    System.out.println("Помилка: дві коми підряд недопустимі.");
+                    System.out.println("Помилка: два деліметри підряд недопустимі.");
                     return 0;
                 }
 
