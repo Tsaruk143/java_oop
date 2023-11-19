@@ -397,9 +397,9 @@ public class Matrix {
         // реалізація агоритму Гауса-Жордана
         for (int i = 0; i < dim; i++) {
             // Якщо діагональний елемент дорівнює нулю, ми його заміняємо на інший елемент стовпчика
-            if (matrix[i][i] == 0) {
+            if (dt[i][i] == 0) {
                 for (int j = i + 1; j < dim; j++) {
-                    if (matrix[j][i] != 0) {
+                    if (dt[j][i] != 0) {
                         swapRows(i, j);
                         inverse.swapRows(i, j);
                         break;
@@ -408,18 +408,18 @@ public class Matrix {
             }
 
             // ділимо елементи на діагональний (ми починали з одиничної матриці, і для справедливого перетворення вона ж має вийти вкінці з ашої сторони)
-            double divisor = matrix[i][i];
+            double divisor = dt[i][i];
             for (int j = 0; j < dim; j++) {
-                matrix[i][j] /= divisor;
+                dt[i][j] /= divisor;
                 inverse.matrix[i][j] /= divisor;
             }
 
             // Закінчення кроків алгоритму Гауса-Жордана (зводяться елемнти до нуля в допоміжній матриці (нашій початковій) та завершується оброблення рядка оберненої матриці)
             for (int j = 0; j < dim; j++) {
                 if (j != i) {
-                    double factor = matrix[j][i];
+                    double factor = dt[j][i];
                     for (int k = 0; k < dim; k++) {
-                        matrix[j][k] -= factor * matrix[i][k];
+                        dt[j][k] -= factor * dt[i][k];
                         inverse.matrix[j][k] -= factor * inverse.matrix[i][k];
                     }
                 }
