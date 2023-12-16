@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.example.MatrixTest" tests="15" skipped="0" failures="0" errors="0" timestamp="2023-11-18T03:49:34" hostname="DESKTOP-SPN73PK" time="0.062">
+  <properties/>
+  <testcase name="testMultiplyToScalarEdit()" classname="org.example.MatrixTest" time="0.02"/>
+  <testcase name="testAddEdit()" classname="org.example.MatrixTest" time="0.001"/>
+  <testcase name="testGetElement()" classname="org.example.MatrixTest" time="0.005"/>
+  <testcase name="testParameterizedConstructor()" classname="org.example.MatrixTest" time="0.002"/>
+  <testcase name="testMultiplyToScalarNew()" classname="org.example.MatrixTest" time="0.001"/>
+  <testcase name="testTransposeMatrix()" classname="org.example.MatrixTest" time="0.002"/>
+  <testcase name="testMultiplyMatrixesEdit()" classname="org.example.MatrixTest" time="0.001"/>
+  <testcase name="testHashCode()" classname="org.example.MatrixTest" time="0.002"/>
+  <testcase name="testAddNew()" classname="org.example.MatrixTest" time="0.001"/>
+  <testcase name="testEquals()" classname="org.example.MatrixTest" time="0.003"/>
+  <testcase name="testGetDim()" classname="org.example.MatrixTest" time="0.001"/>
+  <testcase name="testGetRow()" classname="org.example.MatrixTest" time="0.001"/>
+  <testcase name="testFromVector()" classname="org.example.MatrixTest" time="0.001"/>
+  <testcase name="testDefaultConstructor()" classname="org.example.MatrixTest" time="0.001"/>
+  <testcase name="testMultiplyMatrixesNew()" classname="org.example.MatrixTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
